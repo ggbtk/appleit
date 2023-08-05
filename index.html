@@ -659,6 +659,7 @@
 </div> 
 
 <script type="text/javascript" src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=6sz1qhbamb"></script>
+
 <script>
 var mapOptions = {
     center: new naver.maps.LatLng(35.8166958, 128.5226017),
@@ -670,10 +671,16 @@ var mapOptions = {
     minZoom: 6
 };
 
+
+
+var map = new naver.maps.Map('map', mapOptions);
+</script>
+
+<script id="code">
 var CustomOverlay = function(options) {
     this._element = $('<div style="position:absolute;left:0;top:0;width:124px;background-color:#F2F0EA;text-align:center;border:2px solid #6C483B;">' +
-                        '<img src="./img/imgicon.png" style="width: 120px; height:130px">' +
-                        '<span style="font-weight: bold;"> 애플IT전당포 </span>' +
+                        '<img src="./img/example/brown.png" style="width: 120px; height:130px">' +
+                        '<span style="font-weight: bold;"> Brown </span>' +
                         '</div>')
 
     this.setPosition(options.position);
@@ -735,8 +742,6 @@ naver.maps.Event.addListener(map, 'click', function(e) { //클릭한 위치에 �
 
     overlay.setMap(map);
 });
-
-var map = new naver.maps.Map('map', mapOptions);
 </script>
 </body>
 </html>
