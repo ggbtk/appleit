@@ -20,13 +20,7 @@
     AOS.init(); 
 </script>
    
-    <style>
-        /* Set the map container size */
-        #map {
-            width: 500px;
-            height: 400px;
-        }
-    </style>
+
 </head>
 
 
@@ -581,9 +575,10 @@
                 <h3>찾아오시는 길</h3>
             </div>
             <!--// 텍스트-->       
-    <div id="map">
-	
-	</div>
+          <div class="map_in">
+
+					<div id="map" style="width:100%;height:400px;"></div>
+           </div>
            
          
        <div class="map_detail">
@@ -663,40 +658,14 @@
     
 </div> 
 
+<script type="text/javascript" src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=6sz1qhbamb"></script>
+<script>
+var mapOptions = {
+    center: new naver.maps.LatLng(35.8166958, 128.5226017),
+    zoom: 10
+};
 
-
-
-    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=6sz1qhbamb"></script>
-    <script>
-        // Initialize the map
-        var map = new naver.maps.Map('map', {
-            center: new naver.maps.LatLng(37.5666102, 126.9783881), // Seoul coordinates
-            zoom: 13
-        });
-
-        // Add a marker to the map
-        var marker = new naver.maps.Marker({
-            position: new naver.maps.LatLng(35.8166958, 128.5226017),
-            map: map
-        });
-
-        // Initialize the Directions service
-        var directions = new naver.maps.Directions({
-            map: map,
-            preserveViewport: true
-        });
-
-        // Define the start and end points for the Directions service
-        var start = new naver.maps.LatLng(37.5666102, 126.9783881); // Seoul coordinates
-        var end = new naver.maps.LatLng(37.5642135, 126.9746794); // Another location in Seoul
-
-        // Request the route from the Directions service
-        directions.route({
-            start: start,
-            end: end,
-            method: naver.maps.Directions.Method.TRANSIT, // You can change this to other methods like 'DRIVING', 'WALKING', etc.
-        });
-    </script>
-	
+var map = new naver.maps.Map('map', mapOptions);
+</script>
 </body>
 </html>
