@@ -735,6 +735,13 @@ var overlay = new CustomOverlay({
     position: position
 });
 
+	naver.maps.Event.addListener(map, 'click', function(e) { //클릭한 위치에 오버레이를 추가합니다.
+    var overlay = new CustomOverlay({
+        position: e.coord
+    });
+
+
+});
 </script>
 </body>
 </html>
