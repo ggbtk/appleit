@@ -676,27 +676,16 @@ var mapOptions = {
 var map = new naver.maps.Map('map', mapOptions);
 </script>
 
-<script id="code">
-var HOME_PATH = window.HOME_PATH || '.';
-var position = new naver.maps.LatLng(35.8166958, 128.5226017);
 
 var map = new naver.maps.Map('map', {
-    center: position,
-    zoom: 19
+    center: new naver.maps.LatLng(35.8166958, 128.5226017),
+    zoom: 15
 });
 
-var markerOptions = {
-    position: position.destinationPoint(90, 15),
-    map: map,
-    icon: {
-        url: HOME_PATH +'/img/imgicon.png',
-        size: new naver.maps.Size(482, 400),
-        origin: new naver.maps.Point(0, 0),
-        anchor: new naver.maps.Point(25, 26)
-    }
-};
-
-var marker = new naver.maps.Marker(markerOptions);
+var marker = new naver.maps.Marker({
+    position: new naver.maps.LatLng(35.8166958, 128.5226017),
+    map: map
+});
 </script>
 
 
