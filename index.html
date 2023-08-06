@@ -677,71 +677,30 @@ var map = new naver.maps.Map('map', mapOptions);
 </script>
 
 <script id="code">
-var CustomOverlay = function(options) {
-    this._element = $('<div style="position:absolute;left:0;top:0;width:124px;background-color:#F2F0EA;text-align:center;border:2px solid #6C483B;">' +
-                        '<img src="./img/imgicon.png" style="width: 120px; height:130px">' +
-                        '<span style="font-weight: bold;"> 애플IT전당포 </span>' +
-                        '</div>')
 
-    this.setPosition(options.position);
-    this.setMap(options.map || null);
-};
+	var HOME_PATH = window.HOME_PATH || '.';
+var position = new naver.maps.LatLng(35.8166958, 128.5226017),
 
-CustomOverlay.prototype = new naver.maps.OverlayView();
-CustomOverlay.prototype.constructor = CustomOverlay;
-
-CustomOverlay.prototype.setPosition = function(position) {
-    this._position = position;
-    this.draw();
-};
-
-CustomOverlay.prototype.getPosition = function() {
-    return this._position;
-};
-
-CustomOverlay.prototype.onAdd = function() {
-    var overlayLayer = this.getPanes().overlayLayer;
-
-    this._element.appendTo(overlayLayer);
-};
-
-CustomOverlay.prototype.draw = function() {
-    if (!this.getMap()) {
-        return;
-    }
-
-    var projection = this.getProjection(),
-        position = this.getPosition(),
-        pixelPosition = projection.fromCoordToOffset(position);
-
-    this._element.css('left', pixelPosition.x);
-    this._element.css('top', pixelPosition.y);
-};
-
-CustomOverlay.prototype.onRemove = function() {
-    var overlayLayer = this.getPanes().overlayLayer;
-
-    this._element.remove();
-    this._element.off();
-};
-
-var position = new naver.maps.LatLng(35.8166958, 128.5226017);
-var map = new naver.maps.Map("map", {
+var map = new naver.maps.Map('map', {
     center: position,
     zoom: 19
 });
-var overlay = new CustomOverlay({
+
+var markerOptions = {
+    position: position.destinationPoint(90, 15),
     map: map,
-    position: position
-});
+    icon: {
+        url: HOME_PATH +'/img/imgicon.png',
+        size: new naver.maps.Size(50, 52),
+        origin: new naver.maps.Point(0, 0),
+        anchor: new naver.maps.Point(25, 26)
+    }
+};
 
-	naver.maps.Event.addListener(map, 'click', function(e) { //클릭한 위치에 오버레이를 추가합니다.
-    var overlay = new CustomOverlay({
-        position: e.coord
-    });
+var marker = new naver.maps.Marker(markerOptions);
 
 
-});
+	
 </script>
 </body>
 </html>
