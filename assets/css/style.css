@@ -154,6 +154,16 @@ h6 {
 #header .logo a {
   color: #fff;
 }
+#header .logo-text {
+  color: #fff;
+  font-size: 2.9rem; /* 원하는 크기로 조정 */
+  margin-top: 10px; /* 로고 이미지와의 간격을 조정 */
+  margin-left: -300px; /* 로고 이미지와의 간격을 조정 */
+}
+
+
+
+
 
 #header .logo img {
   max-height: 150px;
